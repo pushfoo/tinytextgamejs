@@ -59,11 +59,12 @@ class TextGame {
                     event.preventDefault();
 
                     let input = this.promptElement.value;
+                    this.promptElement.value = "";
+
                     let game = this.parentTextGame;
 
                     game.inputLocked = true;
                     game.handleInput(input);
-                    this.promptElement.value = "";
                     game.inputLocked = false;
 
                     //todo: for longer-running calls, this may not be a good idea.
