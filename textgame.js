@@ -24,6 +24,14 @@ class TextGame {
         this.containerElement.appendChild(inputForm);
     }
 
+    set inputLocked(state) {
+        this.promptElement.disabled = state;
+    }
+
+    get inputLocked() {
+        return this.promptElement.disabled;
+    }
+
     handleInput(inputLine) {
         //by default, the behavior is to just be an echo prompt
         this.addLine(inputLine);
@@ -46,12 +54,20 @@ class TextGame {
              * in python lambdas. */ 
 
             function(event) {
+    
                 if (event.key == "Enter") {
                     event.preventDefault();
 
                     let input = this.promptElement.value;
-                    this.parentTextGame.handleInput(input);
+                    let game = this.parentTextGame;
+
+                    game.inputLocked = true;
+                    game.handleInput(input);
                     this.promptElement.value = "";
+                    game.inputLocked = false;
+
+                    //todo: for longer-running calls, this may not be a good idea.
+                    this.promptElement.focus();
                 }
             }
         );
@@ -68,7 +84,6 @@ class TextGame {
         this.promptElement.focus();
     };
 
-    
     addLine(message) {
         var newMessage = document.createElement("LI");
         newMessage.className = "text-message";
