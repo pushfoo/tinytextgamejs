@@ -14,6 +14,7 @@ class TextGame {
 
         var promptElement = document.createElement("textarea");
         promptElement.className = "gameTextInput";
+        promptElement.spellcheck = false;
 
         inputForm.appendChild(promptElement);
         this.promptElement = promptElement;
