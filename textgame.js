@@ -44,7 +44,7 @@ class TextGame {
                 if (event.key == "Enter") {
 
                     event.preventDefault();
-                    this.parentTextGame.addMessage(
+                    this.parentTextGame.addLine(
                         this.promptElement.value
                     );
                     this.promptElement.value = "";
@@ -65,7 +65,7 @@ class TextGame {
     };
 
     
-    addMessage(message) {
+    addLine(message) {
         var newMessage = document.createElement("LI");
         newMessage.className = "text-message";
         newMessage.innerText = message;

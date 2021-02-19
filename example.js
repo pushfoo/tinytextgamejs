@@ -1,2 +1,2 @@
 game = new TextGame(document.body);
-game.addMessage("first message");
+game.addLine("first message");
