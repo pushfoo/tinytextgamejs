@@ -24,15 +24,21 @@ class TextGame {
         this.containerElement.appendChild(inputForm);
     }
 
+    // smooths over locking the input element against user interference
     set inputLocked(state) {
         this.promptElement.disabled = state;
     }
-
+    
+    // smooths checking whether the input element is currently locked
     get inputLocked() {
         return this.promptElement.disabled;
     }
 
     handleInput(inputLine) {
+        /*
+            User games should override this method when they subclass.
+        */
+
         //by default, the behavior is to just be an echo prompt
         this.addLine(inputLine);
     }

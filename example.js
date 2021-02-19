@@ -12,6 +12,7 @@ var options = new Set([ ROCK, PAPER, SCISSORS ]);
 class RockPaperScissors extends TextGame {
 
     chooseNextPlay() {
+        //inefficient at scale but it's fine for a small example like this
         this.computerChoice = chooseOption([...options]);
     }
 
