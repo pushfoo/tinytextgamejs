@@ -61,6 +61,7 @@ class TextGame {
             }
 
         );
+        this.promptElement.focus();
     };
 
     
@@ -74,5 +75,3 @@ class TextGame {
 
 }
 
-game = new TextGame(document.body);
-game.addMessage("");
