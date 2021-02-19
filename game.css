@@ -8,6 +8,7 @@ body {
     background-color: #000;
     color: #FFF;
     font-family: monospace;
+
 }
 
 #game > * {
@@ -26,6 +27,8 @@ input, textarea, select {
     font-family: monospace;
     outline: none;
     color: #FFF;
+    width: 100%;
+    height: auto;
 }
 
 .text-display {
