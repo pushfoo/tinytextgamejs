@@ -13,7 +13,6 @@ class TextGame {
         inputForm.className += "game-repl-form";
 
         var promptElement = document.createElement("textarea");
-        promptElement.className = "gameTextInput";
         promptElement.spellcheck = false;
 
         inputForm.appendChild(promptElement);
