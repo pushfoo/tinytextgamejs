@@ -11,7 +11,9 @@ class Game {
         inputForm.parentGame = this;
 
         var textInput = document.createElement("input");
+        //todo: look into whether there's an analog of dictionary updates in JS
         textInput.type = "text";
+        textInput.id = "gameTextInput";
 
         inputForm.appendChild(textInput);
         this.textInput = textInput;
