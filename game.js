@@ -1,5 +1,5 @@
 
-class Game {
+class TextGame {
     
     createUI() {
         var  textLogArea = document.createElement("OL");
@@ -8,25 +8,28 @@ class Game {
         this.containerElement.appendChild(textLogArea);
         
         var inputForm = document.createElement("form")
-        inputForm.parentGame = this;
+        inputForm.parentTextGame = this;
 
-        var textInput = document.createElement("textarea");
-        //todo: look into whether there's an analog of dictionary updates in JS
-        textInput.id = "gameTextInput";
+        var promptElement = document.createElement("textarea");
+        promptElement.className = "gameTextInput";
 
-        inputForm.appendChild(textInput);
-        this.textInput = textInput;
+        inputForm.appendChild(promptElement);
+        this.promptElement = promptElement;
         
         this.inputForm = inputForm;
-        this.inputForm.textInput = textInput;
+        this.inputForm.promptElement = promptElement;
 
         this.containerElement.appendChild(inputForm);
     }
 
     constructor(containerElement) {
+
         this.containerElement = containerElement;
+        //bind this object to the game so we can access it later.
+        containerElement.controllingGame = this;
+
         this.createUI();
-        //todo: fix this?
+
         this.inputForm.addEventListener("keypress",
 
             //"this" keyword refers to the form in the context of the bound
@@ -36,12 +39,13 @@ class Game {
                 if (event.key == "Enter") {
 
                     event.preventDefault();
-                    this.parentGame.addMessage(
-                        this.textInput.value
+                    this.parentTextGame.addMessage(
+                        this.promptElement.value
                     );
-                    this.textInput.value = "";
+                    this.promptElement.value = "";
                 }
-            });
+            }
+        );
     };
 
     
@@ -56,10 +60,10 @@ class Game {
 }
 
 
-game = new Game(document.getElementById('game'));
+game = new TextGame(document.getElementById('game'));
 document.addEventListener("click", 
     function() {
-       game.textInput.focus();
+       game.promptElement.focus();
     }
 );
 
