@@ -1,0 +1,16 @@
+#game {
+    width: 100%;
+    background-color: #000;
+    color: #FFF;
+    font-family: monospace;
+}
+
+textinput {
+    background-color: #00F;
+}
+
+.text-display {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
