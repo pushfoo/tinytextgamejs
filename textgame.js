@@ -24,6 +24,11 @@ class TextGame {
         this.containerElement.appendChild(inputForm);
     }
 
+    handleInput(inputLine) {
+        //by default, the behavior is to just be an echo prompt
+        this.addLine(inputLine);
+    }
+
     constructor(containerElement) {
 
         this.containerElement = containerElement;
@@ -42,11 +47,10 @@ class TextGame {
 
             function(event) {
                 if (event.key == "Enter") {
-
                     event.preventDefault();
-                    this.parentTextGame.addLine(
-                        this.promptElement.value
-                    );
+
+                    let input = this.promptElement.value;
+                    this.parentTextGame.handleInput(input);
                     this.promptElement.value = "";
                 }
             }
