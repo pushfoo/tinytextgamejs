@@ -3,12 +3,14 @@ class TextGame {
     
     createUI() {
         var  textLogArea = document.createElement("OL");
-        textLogArea.className = "text-display";
+        textLogArea.className += "text-display";
+
         this.textLogArea = textLogArea;
         this.containerElement.appendChild(textLogArea);
         
         var inputForm = document.createElement("form")
         inputForm.parentTextGame = this;
+        inputForm.className += "game-repl-form";
 
         var promptElement = document.createElement("textarea");
         promptElement.className = "gameTextInput";
@@ -25,16 +27,19 @@ class TextGame {
     constructor(containerElement) {
 
         this.containerElement = containerElement;
+        containerElement.className += "game-container";
+        
         //bind this object to the game so we can access it later.
         containerElement.controllingGame = this;
 
         this.createUI();
-
+        
+        // bind all pressing of the enter key to "submit" the text.
         this.inputForm.addEventListener("keypress",
+            /* "this" keyword refers to the form in the context of the bound
+             * function rather than the this in the local context as expected
+             * in python lambdas. */ 
 
-            //"this" keyword refers to the form in the context of the bound
-            //function rather than the this in the local context as expected
-            //in python lambdas.
             function(event) {
                 if (event.key == "Enter") {
 
@@ -45,6 +50,16 @@ class TextGame {
                     this.promptElement.value = "";
                 }
             }
+        );
+
+        /* make all click events within the parent element focus the textbox
+        so it behaves like a terminal window without cursor support enabled. */
+
+        containerElement.addEventListener("click",
+            function(e) {
+                containerElement.controllingGame.promptElement.focus();
+            }
+
         );
     };
 
@@ -59,12 +74,5 @@ class TextGame {
 
 }
 
-
-game = new TextGame(document.getElementById('game'));
-document.addEventListener("click", 
-    function() {
-       game.promptElement.focus();
-    }
-);
-
+game = new TextGame(document.body);
 game.addMessage("");

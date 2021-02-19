@@ -3,26 +3,31 @@ body {
     color: #FFF;
 }
 
-#game {
-    width: 100%;
+.game-container {
+    width: calc(100% - 1em);
     background-color: #000;
     color: #FFF;
     font-family: monospace;
-
+    margin: 0;
+    padding: 0.5em;
 }
 
-#game > * {
+.game-container > * {
     margin: 0;
 }
 
+.text-display {
+    list-style: none;
+    padding-inline-start: 0;
+    padding: 0;
+    margin-left: 0;
+}
 
-input, textarea, select {
+.game-repl-form > * {
     padding: 0;
     outline: none;
     border-width: 0px;
     border: 0;
-}
-.gameTextInput {
     background-color: #000;
     font-family: monospace;
     outline: none;
@@ -33,9 +38,3 @@ input, textarea, select {
     resize: none;
 }
 
-.text-display {
-    list-style: none;
-    padding-inline-start: 0;
-    padding: 0;
-    margin-left: 0;
-}
