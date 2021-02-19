@@ -30,6 +30,7 @@ input, textarea, select {
     width: 100%;
     height: auto;
     font-size: 1em;
+    resize: none;
 }
 
 .text-display {
