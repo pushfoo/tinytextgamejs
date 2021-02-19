@@ -29,6 +29,7 @@ input, textarea, select {
     color: #FFF;
     width: 100%;
     height: auto;
+    font-size: 1em;
 }
 
 .text-display {
