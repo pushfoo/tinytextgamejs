@@ -3,14 +3,14 @@ class TextGame {
     
     createUI() {
         var  textLogArea = document.createElement("OL");
-        textLogArea.className += "text-display";
+        textLogArea.classList.add("text-display");
 
         this.textLogArea = textLogArea;
         this.containerElement.appendChild(textLogArea);
         
         var inputForm = document.createElement("form")
         inputForm.parentTextGame = this;
-        inputForm.className += "game-repl-form";
+        inputForm.classList.add("game-repl-form");
 
         var promptElement = document.createElement("textarea");
         promptElement.spellcheck = false;
@@ -46,7 +46,7 @@ class TextGame {
     constructor(containerElement) {
 
         this.containerElement = containerElement;
-        containerElement.className += "game-container";
+        containerElement.classList.add("game-container");
         
         //bind this object to the game so we can access it later.
         containerElement.controllingGame = this;
@@ -93,10 +93,9 @@ class TextGame {
 
     addLine(message) {
         var newMessage = document.createElement("LI");
-        newMessage.className = "text-message";
+        newMessage.classList.add("text-message");
         newMessage.innerText = message;
         this.textLogArea.appendChild(newMessage);
-
     }
 
 }
