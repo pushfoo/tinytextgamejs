@@ -3,11 +3,11 @@ var chooseOption = (indexedArray) => {
     return indexedArray[randomIndex];
 }
 
-ROCK = "rock";
-PAPER = "paper";
-SCISSORS = "scissors";
+const ROCK = "rock";
+const PAPER = "paper";
+const SCISSORS = "scissors";
 
-var options = new Set([ ROCK, PAPER, SCISSORS ]);
+const options = new Set([ ROCK, PAPER, SCISSORS ]);
 
 class RockPaperScissors extends TextGame {
 
@@ -73,4 +73,4 @@ class RockPaperScissors extends TextGame {
         }
    }
 }
-game = new RockPaperScissors(document.body);
+const game = new RockPaperScissors(document.body);
