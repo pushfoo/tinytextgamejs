@@ -51,19 +51,19 @@ class RockPaperScissors extends TextGame {
         } else {
             this.addLine("Player chose " + playerChoice + ", Computer chose " + this.computerChoice);
 
-            if ( playerChoice == this.computerChoice ) {
+            if ( playerChoice === this.computerChoice ) {
                 this.addLine("DRAW!");
             }
             
             else { // someone will win.
 
-                if ( this.computerChoice == ROCK ) {
-                    this.playerWinsWhen(playerChoice == PAPER);
-                } else if ( this.computerChoice == PAPER) {
-                    this.playerWinsWhen(playerChoice == SCISSORS);
+                if ( this.computerChoice === ROCK ) {
+                    this.playerWinsWhen(playerChoice === PAPER);
+                } else if ( this.computerChoice === PAPER) {
+                    this.playerWinsWhen(playerChoice === SCISSORS);
                 
                 } else { // computer chose scissors
-                    this.playerWinsWhen(playerChoice == ROCK);
+                    this.playerWinsWhen(playerChoice === ROCK);
                 }
 
             }

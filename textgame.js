@@ -61,7 +61,7 @@ class TextGame {
 
             function(event) {
     
-                if (event.key == "Enter") {
+                if (event.key === "Enter") {
                     event.preventDefault();
 
                     let input = this.promptElement.value;
