@@ -33,8 +33,8 @@ class RockPaperScissors extends TextGame {
         this.addLine("Choose your move:")
     }
     
-    playerWinsWhen(playerWon) {
-        if(playerWon) {
+    playerWinsWhen(winCondition) {
+        if(winCondition) {
             this.addLine("Player won!");
             this.playerScore += 1;
         } else {
