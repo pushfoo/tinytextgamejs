@@ -56,14 +56,23 @@ class RockPaperScissors extends TextGame {
             }
             
             else { // someone will win.
+                switch(this.computerChoice) {
+                    
+                    case ROCK: 
+                        this.playerWinsWhen(playerChoice === PAPER);
+                        break;
+                        
+                    case PAPER:
+                        this.playerWinsWhen(playerChoice === SCISSORS);
+                        break;
+                    
+                    case SCISSORS:
+                        this.playerWinsWhen(playerChoice === ROCK);
+                        break;
 
-                if ( this.computerChoice === ROCK ) {
-                    this.playerWinsWhen(playerChoice === PAPER);
-                } else if ( this.computerChoice === PAPER) {
-                    this.playerWinsWhen(playerChoice === SCISSORS);
-                
-                } else { // computer chose scissors
-                    this.playerWinsWhen(playerChoice === ROCK);
+                    default:
+                        this.addLine("Something impossible happened.");
+
                 }
 
             }
