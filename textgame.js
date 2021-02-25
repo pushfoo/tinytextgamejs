@@ -109,6 +109,7 @@ class TextGame {
 }
 
 var chooseIndex = (indexedArray) => {
+    //Choose a random index in the passed array and return it
     return Math.floor(Math.random() * indexedArray.length);
 }
 
