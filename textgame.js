@@ -1,4 +1,9 @@
+/*
+A tiny library to help i plement text games.
 
+Subclass TextGame to use it. The baseclass only echoes what it recieves.
+
+*/
 class TextGame {
     
     createUI() {
