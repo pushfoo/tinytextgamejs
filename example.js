@@ -6,7 +6,7 @@ do the same for their own games.
 
 */
 
-const ROCK = "rock"
+const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
