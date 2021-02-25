@@ -1,4 +1,12 @@
-const ROCK = "rock";
+/*
+A simple example implementation of Rock, Paper, Scissors.
+
+It subclasses TextGame and implements a new handleInput method. Users should 
+do the same for their own games.
+
+*/
+
+const ROCK = "rock"
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
