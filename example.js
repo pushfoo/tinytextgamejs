@@ -51,7 +51,18 @@ class RockPaperScissors extends TextGame {
         }
         this.addLine("Choose your move:")
     }
-    
+   
+    showHelp() {
+        this.addLine(`You can choose from the following options:
+                rock     - select rock as your move
+                paper    - select paper as your move
+                scissors - select scissors as your move
+                clear      - clear the screen
+                help       - show this screen again
+                
+            You can also type the first letter of rock, paper, or scissors as a shorthand way of declaring a move.
+            `);
+    }
     playerWinsWhen(winCondition) {
         if(winCondition) {
             this.addLine("Player won!");
@@ -61,7 +72,7 @@ class RockPaperScissors extends TextGame {
             this.computerScore += 1;
         }
     }
-
+    
     handleInput(input) {
         this.addLine(input);
         let playerChoice = input.toLowerCase();
@@ -72,11 +83,12 @@ class RockPaperScissors extends TextGame {
         }
 
         if ( ! options.has(playerChoice) ) {
-
-            if (playerChoice === "clear") {
+            if (playerChoice === "help" ) {
+               this.showHelp(); 
+            } else if (playerChoice === "clear") {
                 this.clearLines();
             } else {
-                this.addLine("'" + playerChoice + "' is not a valid move.");
+                this.addLine("'" + playerChoice + "' is not a valid move. type 'help' to see available options.");
             }
 
         } else {
