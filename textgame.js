@@ -105,7 +105,15 @@ class TextGame {
         newMessage.innerText = message;
         this.textLogArea.appendChild(newMessage);
     }
+    
+    clearLines() {
+        // Remove all lines of text from the display area
 
+        let lines = this.textLogArea;
+        while ( lines.firstChild ) {
+            lines.removeChild(lines.lastChild);
+        }
+    }
 }
 
 var chooseIndex = (indexedArray) => {
