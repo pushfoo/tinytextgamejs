@@ -32,7 +32,6 @@ const shorthandTable = buildShorthandTable(options);
 class RockPaperScissors extends TextGame {
 
     chooseNextPlay() {
-        //inefficient at scale but it's fine for a small example like this
         this.computerChoice = options.choose();
     }
 
@@ -73,8 +72,16 @@ class RockPaperScissors extends TextGame {
         }
 
         if ( ! options.has(playerChoice) ) {
-            this.addLine("'" + playerChoice + "' is not a valid move.");
+
+            if (playerChoice === "clear") {
+                this.clearLines();
+            } else {
+                this.addLine("'" + playerChoice + "' is not a valid move.");
+            }
+
         } else {
+
+            this.chooseNextPlay();
             this.addLine("Player chose " + playerChoice + ", Computer chose " + this.computerChoice);
 
             if ( playerChoice === this.computerChoice ) {
@@ -82,6 +89,7 @@ class RockPaperScissors extends TextGame {
             }
             
             else { // someone will win.
+
                 switch(this.computerChoice) {
                     
                     case ROCK: 
@@ -102,10 +110,9 @@ class RockPaperScissors extends TextGame {
                 }
 
             }
-            this.chooseNextPlay();
-            this.showPrompt();
  
         }
+        this.showPrompt();
    }
 }
 const game = new RockPaperScissors(document.body);
