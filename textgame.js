@@ -3,6 +3,9 @@ A tiny library to help i plement text games.
 
 Subclass TextGame to use it. The baseclass only echoes what it recieves.
 
+Additional classes and functions are also included to
+speed up development of games.
+
 */
 class TextGame {
     
@@ -105,3 +108,48 @@ class TextGame {
 
 }
 
+var chooseIndex = (indexedArray) => {
+    //Choose a random index in the passed array and return it
+    return Math.floor(Math.random() * indexedArray.length);
+}
+
+
+class ChoicePool extends Set {
+    /*
+    Extends basic set with choice-related functionality.
+
+    Currently repackages an implementation of choices that
+    was a quick hack. Future implementation details may change.
+    */
+    constructor(iterable) {
+        if(iterable) {
+            super(iterable);
+        }
+        else {
+            super();
+        }
+        this._rebuildArrayCache();
+    }
+
+    _rebuildArrayCache() {
+        this._arrayCache = [...this];
+    }
+
+    add(elt) { 
+        if(! this.has(elt)) {
+            Set.prototype.add.call(this, elt);
+            this._rebuildArrayCache();
+        }
+    }
+
+    delete(elt) {
+        if( this.has(elt) ) {
+            Set.prototype.delete.call(this, elt);
+            this._rebuildArrayCache();
+        }
+    }
+
+    choose() {
+        return this._arrayCache[chooseIndex(this._arrayCache)];
+    }
+}

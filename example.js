@@ -1,19 +1,22 @@
-var chooseOption = (indexedArray) => {
-    let randomIndex = Math.floor(Math.random() * indexedArray.length);
-    return indexedArray[randomIndex];
-}
+/*
+A simple example implementation of Rock, Paper, Scissors.
+
+It subclasses TextGame and implements a new handleInput method. Users should 
+do the same for their own games.
+
+*/
 
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
-const options = new Set([ ROCK, PAPER, SCISSORS ]);
+const options = new ChoicePool([ ROCK, PAPER, SCISSORS ]);
 
 class RockPaperScissors extends TextGame {
 
     chooseNextPlay() {
         //inefficient at scale but it's fine for a small example like this
-        this.computerChoice = chooseOption([...options]);
+        this.computerChoice = options.choose();
     }
 
     constructor(containerElement) {
