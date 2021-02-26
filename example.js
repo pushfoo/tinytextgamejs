@@ -12,6 +12,23 @@ const SCISSORS = "scissors";
 
 const options = new ChoicePool([ ROCK, PAPER, SCISSORS ]);
 
+var buildShorthandTable = (iterable) => { 
+    /*
+    Build table mapping short form -> full command.
+
+    currently only uses the first character.
+    */
+    let table = {};
+
+    iterable.forEach(command => { 
+        table[command[0]] = command;
+    });
+    return table;
+};
+
+const shorthandTable = buildShorthandTable(options);
+
+
 class RockPaperScissors extends TextGame {
 
     chooseNextPlay() {
@@ -49,6 +66,12 @@ class RockPaperScissors extends TextGame {
     handleInput(input) {
         this.addLine(input);
         let playerChoice = input.toLowerCase();
+
+        //expand shorthand to full form
+        if ( playerChoice in shorthandTable) {
+            playerChoice = shorthandTable[playerChoice];
+        }
+
         if ( ! options.has(playerChoice) ) {
             this.addLine("'" + playerChoice + "' is not a valid move.");
         } else {
