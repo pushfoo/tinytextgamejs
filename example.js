@@ -12,10 +12,26 @@ const SCISSORS = "scissors";
 
 const options = new ChoicePool([ ROCK, PAPER, SCISSORS ]);
 
+var buildShorthandTable = (iterable) => { 
+    /*
+    Build table mapping short form -> full command.
+
+    currently only uses the first character.
+    */
+    let table = {};
+
+    iterable.forEach(command => { 
+        table[command[0]] = command;
+    });
+    return table;
+};
+
+const shorthandTable = buildShorthandTable(options);
+
+
 class RockPaperScissors extends TextGame {
 
     chooseNextPlay() {
-        //inefficient at scale but it's fine for a small example like this
         this.computerChoice = options.choose();
     }
 
@@ -35,7 +51,18 @@ class RockPaperScissors extends TextGame {
         }
         this.addLine("Choose your move:")
     }
-    
+   
+    showHelp() {
+        this.addLine(`You can choose from the following options:
+                rock     - select rock as your move
+                paper    - select paper as your move
+                scissors - select scissors as your move
+                clear      - clear the screen
+                help       - show this screen again
+                
+            You can also type the first letter of rock, paper, or scissors as a shorthand way of declaring a move.
+            `);
+    }
     playerWinsWhen(winCondition) {
         if(winCondition) {
             this.addLine("Player won!");
@@ -45,13 +72,28 @@ class RockPaperScissors extends TextGame {
             this.computerScore += 1;
         }
     }
-
+    
     handleInput(input) {
         this.addLine(input);
         let playerChoice = input.toLowerCase();
+
+        //expand shorthand to full form
+        if ( playerChoice in shorthandTable) {
+            playerChoice = shorthandTable[playerChoice];
+        }
+
         if ( ! options.has(playerChoice) ) {
-            this.addLine("'" + playerChoice + "' is not a valid move.");
+            if (playerChoice === "help" ) {
+               this.showHelp(); 
+            } else if (playerChoice === "clear") {
+                this.clearLines();
+            } else {
+                this.addLine("'" + playerChoice + "' is not a valid move. type 'help' to see available options.");
+            }
+
         } else {
+
+            this.chooseNextPlay();
             this.addLine("Player chose " + playerChoice + ", Computer chose " + this.computerChoice);
 
             if ( playerChoice === this.computerChoice ) {
@@ -59,6 +101,7 @@ class RockPaperScissors extends TextGame {
             }
             
             else { // someone will win.
+
                 switch(this.computerChoice) {
                     
                     case ROCK: 
@@ -79,10 +122,9 @@ class RockPaperScissors extends TextGame {
                 }
 
             }
-            this.chooseNextPlay();
-            this.showPrompt();
  
         }
+        this.showPrompt();
    }
 }
 const game = new RockPaperScissors(document.body);
