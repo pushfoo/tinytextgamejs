@@ -47,7 +47,7 @@ class RockPaperScissors extends TextGame {
 
     showPrompt() {
         if ( this.computerScore || this.playerScore ) {
-            this.addLine("Player: " + this.playerScore + " Computer: " + this.computerScore);
+            this.addLine(`Player: ${this.playerScore} Computer: ${this.computerScore}`);
         }
         this.addLine("Choose your move:")
     }
@@ -88,13 +88,13 @@ class RockPaperScissors extends TextGame {
             } else if (playerChoice === "clear") {
                 this.clearLines();
             } else {
-                this.addLine("'" + playerChoice + "' is not a valid move. type 'help' to see available options.");
+                this.addLine(`'${playerChoice}' is not a valid move. type 'help' to see available options.`);
             }
 
         } else {
 
             this.chooseNextPlay();
-            this.addLine("Player chose " + playerChoice + ", Computer chose " + this.computerChoice);
+            this.addLine(`Player chose ${playerChoice}, Computer chose ${this.computerChoice}`);
 
             if ( playerChoice === this.computerChoice ) {
                 this.addLine("DRAW!");
