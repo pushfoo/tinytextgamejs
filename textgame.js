@@ -10,17 +10,17 @@ speed up development of games.
 class TextGame {
     
     createUI() {
-        var  textLogArea = document.createElement("OL");
+        let  textLogArea = document.createElement("OL");
         textLogArea.classList.add("text-display");
 
         this.textLogArea = textLogArea;
         this.containerElement.appendChild(textLogArea);
         
-        var inputForm = document.createElement("form")
+        let inputForm = document.createElement("form")
         inputForm.parentTextGame = this;
         inputForm.classList.add("game-repl-form");
 
-        var promptElement = document.createElement("textarea");
+        let promptElement = document.createElement("textarea");
         promptElement.spellcheck = false;
 
         inputForm.appendChild(promptElement);
@@ -100,7 +100,7 @@ class TextGame {
     };
 
     addLine(message) {
-        var newMessage = document.createElement("LI");
+        let newMessage = document.createElement("LI");
         newMessage.classList.add("text-message");
         newMessage.innerText = message;
         this.textLogArea.appendChild(newMessage);
@@ -116,7 +116,7 @@ class TextGame {
     }
 }
 
-var chooseIndex = (indexedArray) => {
+const chooseIndex = (indexedArray) => {
     //Choose a random index in the passed array and return it
     return Math.floor(Math.random() * indexedArray.length);
 }

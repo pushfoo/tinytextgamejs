@@ -12,7 +12,7 @@ const SCISSORS = "scissors";
 
 const options = new ChoicePool([ ROCK, PAPER, SCISSORS ]);
 
-var buildShorthandTable = (iterable) => { 
+const buildShorthandTable = (iterable) => { 
     /*
     Build table mapping short form -> full command.
 
