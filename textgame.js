@@ -145,14 +145,14 @@ class ChoicePool extends Set {
 
     add(elt) { 
         if(! this.has(elt)) {
-            Set.prototype.add.call(this, elt);
+            super.add(elt);
             this._rebuildArrayCache();
         }
     }
 
     delete(elt) {
         if( this.has(elt) ) {
-            Set.prototype.delete.call(this, elt);
+            super.delete(elt);
             this._rebuildArrayCache();
         }
     }
