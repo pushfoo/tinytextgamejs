@@ -18,7 +18,7 @@ const buildShorthandTable = (iterable) => {
 
     currently only uses the first character.
     */
-    let table = {};
+    const table = {};
 
     iterable.forEach(command => { 
         table[command[0]] = command;

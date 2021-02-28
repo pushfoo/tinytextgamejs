@@ -10,17 +10,17 @@ speed up development of games.
 class TextGame {
     
     createUI() {
-        let  textLogArea = document.createElement("OL");
+        const  textLogArea = document.createElement("OL");
         textLogArea.classList.add("text-display");
 
         this.textLogArea = textLogArea;
         this.containerElement.appendChild(textLogArea);
         
-        let inputForm = document.createElement("form")
+        const inputForm = document.createElement("form")
         inputForm.parentTextGame = this;
         inputForm.classList.add("game-repl-form");
 
-        let promptElement = document.createElement("textarea");
+        const promptElement = document.createElement("textarea");
         promptElement.spellcheck = false;
 
         inputForm.appendChild(promptElement);
@@ -72,10 +72,10 @@ class TextGame {
                 if (event.key === "Enter") {
                     event.preventDefault();
 
-                    let input = this.promptElement.value;
+                    const input = this.promptElement.value;
                     this.promptElement.value = "";
 
-                    let game = this.parentTextGame;
+                    const game = this.parentTextGame;
 
                     game.inputLocked = true;
                     game.handleInput(input);
@@ -100,7 +100,7 @@ class TextGame {
     };
 
     addLine(message) {
-        let newMessage = document.createElement("LI");
+        const newMessage = document.createElement("LI");
         newMessage.classList.add("text-message");
         newMessage.innerText = message;
         this.textLogArea.appendChild(newMessage);
@@ -109,7 +109,7 @@ class TextGame {
     clearLines() {
         // Remove all lines of text from the display area
 
-        let lines = this.textLogArea;
+        const lines = this.textLogArea;
         while ( lines.firstChild ) {
             lines.removeChild(lines.lastChild);
         }
