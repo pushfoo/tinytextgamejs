@@ -161,3 +161,5 @@ class ChoicePool extends Set {
         return this._arrayCache[chooseIndex(this._arrayCache)];
     }
 }
+
+export { TextGame , ChoicePool };
