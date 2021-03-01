@@ -5,6 +5,7 @@ It subclasses TextGame and implements a new handleInput method. Users should
 do the same for their own games.
 
 */
+import { TextGame, ChoicePool } from './textgame.js';
 
 const ROCK = "rock";
 const PAPER = "paper";
