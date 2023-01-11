@@ -1,5 +1,5 @@
 /*
-A tiny library to help i plement text games.
+A tiny learning project library to help implement text games.
 
 Subclass TextGame to use it. The baseclass only echoes what it recieves.
 
