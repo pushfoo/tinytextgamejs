@@ -1,5 +1,8 @@
 # TinyTextGameJS
 
+> [!NOTE]
+> This repo will likely be split and updated due to: <ol><li>[Recent updates to JavaScript's `Set`](https://developer.mozilla.org/en-US/blog/javascript-set-methods/)</li><li>My own upcoming projects</li></ol>
+
 You are probably looking for another library, such as [xterm.js](http://xtermjs.org/).
 
 This is a learning project. It contains the following:
